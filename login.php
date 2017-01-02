@@ -23,6 +23,7 @@
 	}
 	
 	$signupPasswordError = "";
+	$signupPassword = "";
 	
 	//kas olemas
 	if (isset ($_POST["signupPassword"])) {
@@ -37,6 +38,28 @@
 			if (strlen ($_POST["signupPassword"]) < 8 ) {
 				$signupPasswordError = "Parool peab olema vähemalt 8 tahemarki pikk";
 			}
+		}
+	}
+	
+	$signupFristnameError = "";
+	$signupFirstname = "";
+	
+	if (isset ($_POST["signupFirstname"])) {
+		if (empty ($_POST["signupFirstname"])) {
+			$signupFristnameError = "See on kohustuslik";
+		} else {
+			$signupFirstname = $_POST["signupFirstname"];
+		}
+	}
+	
+	$signupLastnameError = "";
+	$signupLastname = "";
+	
+	if (isset ($_POST["signupLastname"])) {
+		if (empty ($_POST["signupLastname"])) {
+			$signupLastnameError = "See on kohustuslik";
+		} else {
+			$signupLastname = $_POST["signupLastname"];
 		}
 	}
 	
@@ -84,28 +107,57 @@
 <!DOCTYPE html>
 <html>
 	<head>
+	<style>
+	
+	input[type="submit"] {
+		
+		padding: 12px 20px;
+		margin: 8px 0;
+		box-sizing: border-box;
+		border: none;
+		background-color: #F08080;
+		color: white;
+	}
+	
+	input {
+		
+		padding: 12px 20px;
+		margin: 8px 0;
+		box-sizing: border-box;
+		border: none;
+		border-bottom: 2px solid LightGreen;
+	}
+	
 		<title>Sisselogimise leht</title>
+	</style>
 	</head>
 	<body>
-		<h1>Logi sisse</h1>
-		<form method="POST">
-			<label>E-post</label><br>
-			<input name="loginEmail" type="email">
+		<h1 style="text-align:center;">Logi sisse</h1>
+		<form method="POST" style = "text-align:center">
+		
+			<input placeholder = "E-mail" name="loginEmail" type="email">
 			
 			<br><br>
 			
-			<label>Parool</label><br>
-			<input name="loginPassword" type="password">
+			<input placeholder = "Parool" name="loginPassword" type="password">
 			
 			<br><br>
 			
 			<input type="submit" value="Logi sisse">
 			
 		</form>
-		<h1>Loo kasutaja</h1>
+		<h1 style="text-align:center;">Loo kasutaja</h1>
 		<form method="POST">
 			
 			<input placeholder="E-mail" name="signupEmail" type="email"> <?php echo $signupEmailError; ?>
+			
+			<br><br>
+			
+			<input placeholder="Eesnimi" name="Firstname" type="firstname"> <?php echo $signupFirstnameError; ?>
+			
+			<br><br>
+			
+			<input placeholder="Perekonnanimi" name="Lastname" type="lastname"> <?php echo $signupLastnameError; ?>
 			
 			<br><br>
 			
@@ -113,6 +165,7 @@
 			
 			<br><br>
 			
+			<label>Sugu</label><br>
 			<?php if ($gender == "male") { ?>
 				<input type="radio" name="gender" value="male" checked > Mees<br>
 			<?php } else { ?>
