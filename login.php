@@ -82,7 +82,7 @@
 		echo "räsi ".$password."<br>";
 		
 		//uhendus
-		$database = "if16_karokrii"
+		$database = "if16_karokrii";
 		$mysqli = new mysqli($serverHost, $serverUsername, $serverPassword, $database);
 		
 		//kask
@@ -147,13 +147,13 @@
 			
 		</form>
 		<h1 style="text-align:center;">Loo kasutaja</h1>
-		<form method="POST">
+		<form method="POST"  style = "text-align:center">
 			
 			<input placeholder="E-mail" name="signupEmail" type="email"> <?php echo $signupEmailError; ?>
 			
 			<br><br>
 			
-			<input placeholder="Eesnimi" name="Firstname" type="firstname"> <?php echo $signupFirstnameError; ?>
+			<input placeholder="Eesnimi" name="Firstname" type="firstname"> <?php echo $signupFristnameError; ?>
 			
 			<br><br>
 			
